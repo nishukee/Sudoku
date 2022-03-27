@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Mobile Status Bar Color-->
+    <meta name="theme-color" content="#fff">
+    <title>Sudoku</title>
+    <link rel="shortcut icon" href="./static/images/icon.png" type="image/x-icon">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@500&display=swap" rel="stylesheet"> 
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/517dcc9983.js" crossorigin="anonymous"></script>
+    <!--app css-->
+    <link rel="stylesheet" href="./app.css">
+</head>
+
+<body>
+
+    <!-- Top Nav -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                Sudoku
+            </a>
+            <div class="dark-mode-toggle" id="dark-mode-toggle">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- End Top Nav-->
+    
+    <!--Main-->
+    <div class="main">
+        <div class="screen">
+            <!--Start Screeen-->
+            <div class="start-screen active" id="start-screen">
+                <input type="text" placeholder="Your name" maxlength="11" class="input-name" id="input-name">
+                <div class="btn" id="btn-level">Easy</div>
+                <div class="btn" id="btn-continue">Continue</div>
+                <div class="btn btn-blue" id="btn-play">New game</div>
+            </div>
+            <!--End Start Screen-->
+
+            <!-- Game Screen-->
+            <div class="main-game">
+                
+            </div>
+            <!-- End Game Screen-->
+        </div>
+    </div>
+    <!--End Main-->
+
+    <script src="./static/js/constant.js"></script>
+    <script src="./static/js/app.js"></script>
+</body>
+
+</html>
