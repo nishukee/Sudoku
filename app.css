@@ -2,8 +2,8 @@
   --bg-main: #bbb;
   --bg-body: #fff;
   --color-txt: #000;
-  --filled-color: #000;
-  --filled-bg: #caf0f8;
+  --filled-bg: #000;
+  --filled-color: #caf0f8;
 
   --white: #fff;
   --blue: #00aeef;
@@ -11,7 +11,7 @@
   --black: #000;
 
   --nav-size: 70px;
-  --sudoku-cell-size: 50px;
+  --sudoku-cell-size: 40px;
 
   --border-radius: 10px;
 
@@ -116,7 +116,7 @@ nav {
 }
 
 .main {
-  height: 80vh;
+  height: 100vh;
   padding-top: var(--nav-size);
   display: grid;
   place-items: center;
@@ -199,4 +199,127 @@ nav {
   100% {
     transform: translateX(0);
   }
+}
+
+.main-game {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.main-game.active {
+  transform: translateX(0);
+}
+
+.main-sudoku-grid {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(9, auto);
+}
+
+.main-grid-cell {
+  height: var(--sudoku-cell-size);
+  width: var(--sudoku-cell-size);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-main);
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size);
+  cursor: pointer;
+}
+
+.main-grid-cell.filled {
+  background-color: var(--filled-bg);
+  color: var(--filled-color);
+}
+
+.main-grid-cell.selected {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.main-grid-cell:hover {
+  border: 2px solid var(--blue);
+}
+
+.main-grid-cell.hover {
+  border: 3px solid var(--blue);
+}
+
+.dark .main-grid-cell.hover {
+  border: 3px splid var(--blue);
+}
+
+.main-grid-cell.err {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.main-game-info {
+  margin-top: var(--space-y);
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.main-game-info-box {
+  height: 40px;
+  background-color: var(--bg-main);
+  color: var(--color-txt);
+  border-radius: var(--border-radius);
+  display: grid;
+  place-items: center;
+  padding: 0 20px;
+  font-size: var(--font-size);
+}
+
+.main-game-info-time {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2rem;
+  margin-bottom: auto;
+}
+
+.pause-btn {
+  position: absolute;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: var(--border-radius);
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: var(--font-size);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.numbers {
+  margin-bottom: var(--space-y);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.number {
+  height: var(--sudoku-cell-size);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-main);
+  color: var(--color-txt);
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size);
+  cursor: pointer;
+}
+
+.delete {
+  background-color: var(--red);
+  color: var(--white);
 }
