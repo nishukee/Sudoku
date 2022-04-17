@@ -11,6 +11,7 @@ document.querySelector('#dark-mode-toggle').addEventListener('click', () => {
 // Screens
 const start_screen = document.querySelector('#start-screen');
 const game_screen = document.querySelector('#game-screen');
+const pause_screen = document.querySelector('#pause-screen');
 //-------------------
 const cells = document.querySelectorAll('.main-grid-cell');
 
@@ -70,6 +71,15 @@ const startGame = () => {
     }, 1000);
 }
 
+const returnStartScreen = () => {
+    clearInterval(timer);
+    pause = false;
+    seconds = 0;
+    start_screen.classList.add('active');
+    game_screen.classList.remove('active');
+    pause_screen.classList.remove('active');
+}
+
 // Add Button Event
 document.querySelector('#btn-level').addEventListener('click', (e) => {
     level_index = level_index + 1 > CONSTANT.LEVEL.length - 1 ? 0 : level_index + 1;
@@ -89,6 +99,20 @@ document.querySelector('#btn-play').addEventListener('click', () => {
         },500);
     }
 });
+
+document.querySelector('#btn-pause').addEventListener('click', () => {
+    pause_screen.classList.add('active');
+    pause = true;
+});
+
+document.querySelector('#btn-resume').addEventListener('click', () => {
+    pause_screen.classList.remove('active');
+    pause = false;
+});
+
+document.querySelector('#btn-new-game').addEventListener('click', () => {
+    returnStartScreen();
+});
 //-----------------------
 
 const init = () => {
@@ -103,6 +127,13 @@ const init = () => {
     document.querySelector('#input-name').value = '';
 
     initGameGrid();
+
+    if (getPlayerName()) {
+        name_input.value = getPlayerName();
+        {
+            name_input.focus();
+        }
+    }
 }
 
 init();
