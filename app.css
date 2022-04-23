@@ -418,11 +418,11 @@ nav {
 	:root {
 		--nav-size: 50px;
 
-		--sudoku-cell-size: 30px;
+		--sudoku-cell-size: 35px;
 	
 		--border-radius: 5px;
 	
-		--space-y: 10px;
+		--space-y: 7px;
 	
 		--gap: 2px;
 	
