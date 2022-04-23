@@ -2,12 +2,12 @@
 	--bg-main: #bbb;
 	--bg-body: #fff;
 	--color-txt: #000;
-	--filled-bg: #000;
-	--filled-color: #caf0f8;
+	--filled-color: #000;
+	--filled-bg: steelblue;
 
 	--white: #fff;
-	--blue: #00aeef;
-	--red: #e91e63;
+	--blue: #6200ee;
+	--red: red;
 	--black: #000;
 
 	--nav-size: 50px;
@@ -19,18 +19,22 @@
 
 	--gap: 5px;
 
-	--font-size: 1.5rem;
-	--font-size-md: 1.75rem;
-	--font-size-lg: 2rem;
-	--font-size-xl: 3rem;
+	--number-pad: 6px;
+
+	--font-size: 1.25rem;
+	--font-size-md: 1.5rem;
+	--font-size-lg: 1.75rem;
+	--font-size-xl: 2rem;
 }
 
 .dark {
-	--bg-main: #2a2a38;
-	--bg-body: #1a1a2e;
-	--color-txt: #6a6a6a;
-	--filled-color: #4f4f63;
+	--bg-main: #1c1c1c;
+	--bg-body: #121212;
+	--color-txt: white;
+	--filled-color: white;
 	--filled-bg: #000;
+
+	--blue: #3700b3;
 }
 
 * {
@@ -50,8 +54,8 @@ body {
 
 input {
 	font-family: 'Atma', cursive;
-	border: 2px solid var(--bg-main);
-	color: var(--color-text);
+	border: 2px solid var(--color-txt);
+	color: var(--color-txt);
 }
 
 input:hover,
@@ -248,11 +252,11 @@ nav {
 }
 
 .main-grid-cell.hover {
-	border: 3px solid var(--blue);
+	border: 2px solid var(--blue);
 }
 
 .dark .main-grid-cell.hover {
-	border: 3px splid var(--blue);
+	border: 2px solid var(--blue);
 }
 
 .main-grid-cell.err {
@@ -306,7 +310,7 @@ nav {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	gap: 6px;
-	padding-top: 6px;
+	padding-top: var(--number-pad);
 }
 
 .number {
@@ -331,7 +335,8 @@ nav {
 	cursor: pointer;
 }
 
-.pause-screen {
+.pause-screen,
+.result-screen {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -344,16 +349,37 @@ nav {
 	display: none;
 }
 
-.pause-screen.active {
+.pause-screen.active,
+.result-screen.active {
 	display: flex;
 }
 
-.pause-screen > * + * {
+.pause-screen > * + * ,
+.result-screen > * + *{
 	margin-top: 20px;
+}
+
+.result-screen div {
+	animation: zoom-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.75);
 }
 
 .pause-screen.active .btn {
 	animation: zoom-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.75);
+}
+
+.result-screen .congrate {
+	font-size: var(--font-size-xl);
+	color: var(--blue);
+}
+
+.result-screen .info {
+	color: var(--color-txt);
+	font-size: var(--font-size-xl);
+}
+
+#result-time {
+	color: var(--blue);
+	font-size: var(--font-size-xl);
 }
 
 .zoom-in {
@@ -385,5 +411,43 @@ nav {
 	}
 	100% {
 		transform: scale(2);
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	:root {
+		--nav-size: 50px;
+
+		--sudoku-cell-size: 30px;
+	
+		--border-radius: 5px;
+	
+		--space-y: 10px;
+	
+		--gap: 2px;
+	
+		--number-pad: 3px;
+
+		--font-size: 1rem;
+		--font-size-md: 1.25rem;
+		--font-size-lg: 1.5rem;
+		--font-size-xl: 1.75rem;
+	}
+
+	.input-name,
+	.btn {
+		height: 50px;
+	}
+
+	.main-grid-cell.hover {
+		border-width: 2px;
+	}
+
+	.screen {
+		min-width: unset;
+	}
+
+	.main {
+		height: 100vh;
 	}
 }

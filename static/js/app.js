@@ -14,6 +14,7 @@ document.querySelector('#dark-mode-toggle').addEventListener('click', () => {
 const start_screen = document.querySelector('#start-screen');
 const game_screen = document.querySelector('#game-screen');
 const pause_screen = document.querySelector('#pause-screen');
+const result_screen = document.querySelector('#result-screen');
 //-------------------
 const cells = document.querySelectorAll('.main-grid-cell');
 
@@ -24,6 +25,8 @@ const number_inputs = document.querySelectorAll('.number');
 const player_name = document.querySelector('#player-name');
 const game_level = document.querySelector('#game-level');
 const game_time = document.querySelector('#game-time');
+
+const result_time = document.querySelector('#result-time');
 
 let level_index = 0;
 let level = CONSTANT.LEVEL[level_index];
@@ -78,7 +81,9 @@ const initSudoku = () => {
 	su = sudokuGen(level);
 	su_answer = [...su.question];
 
-	console.table(su_answer);
+	seconds = 0;
+
+	saveGameInfo();
 
 	//Show Sudoku to div
 	for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
@@ -90,6 +95,34 @@ const initSudoku = () => {
 		if (su.question[row][col] !== 0) {
 			cells[i].classList.add('filled');
 			cells[i].innerHTML = su.question[row][col];
+		}
+	}
+};
+
+const loadSudoku = () => {
+	let game = getGameInfo();
+
+	game_level.innerHTML = CONSTANT.LEVEL_NAME[game_level];
+
+	su = game.su;
+
+	su_answer = su.answer;
+
+	seconds = game.seconds;
+	game_time.innerHTML = showTime(seconds);
+
+	level_index = game.level;
+
+	//Show Sudoku to div
+	for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
+		let row = Math.floor(i / CONSTANT.GRID_SIZE);
+		let col = i % CONSTANT.GRID_SIZE;
+
+		cells[i].setAttribute('data-value', su_answer[row][col]);
+		cells[i].innerHTML = su_answer[row][col] !== 0 ? su_answer[row][col] : '';
+
+		if (su.question[row][col] !== 0) {
+			cells[i].classList.add('filled');
 		}
 	}
 };
@@ -212,8 +245,8 @@ const isGameWin = () => sudokuCheck(su_answer);
 
 const showResult = () => {
 	clearInterval(timer);
-	alert('win');
-	//Show result screen
+	result_screen.classList.add('active');
+	result_time.innerHTML = showTime(seconds);
 };
 
 const initNumberInputEvent = () => {
@@ -290,6 +323,7 @@ const returnStartScreen = () => {
 	start_screen.classList.add('active');
 	game_screen.classList.remove('active');
 	pause_screen.classList.remove('active');
+	result_screen.classList.remove('active');
 };
 
 // Add Button Event
@@ -313,6 +347,19 @@ document.querySelector('#btn-play').addEventListener('click', () => {
 	}
 });
 
+document.querySelector('#btn-continue').addEventListener('click', () => {
+	if (name_input.value.trim().length > 0) {
+		loadSudoku();
+		startGame();
+	} else {
+		name_input.classList.add('input-err');
+		setTimeout(() => {
+			name_input.classList.remove('input-err');
+			name_input.focus();
+		}, 500);
+	}
+});
+
 document.querySelector('#btn-pause').addEventListener('click', () => {
 	pause_screen.classList.add('active');
 	pause = true;
@@ -324,6 +371,10 @@ document.querySelector('#btn-resume').addEventListener('click', () => {
 });
 
 document.querySelector('#btn-new-game').addEventListener('click', () => {
+	returnStartScreen();
+});
+
+document.querySelector('#btn-new-game-2').addEventListener('click', () => {
 	returnStartScreen();
 });
 
