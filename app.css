@@ -3,10 +3,10 @@
 	--bg-body: #fff;
 	--color-txt: #000;
 	--filled-color: #000;
-	--filled-bg: steelblue;
+	--filled-bg: slategray;
 
 	--white: #fff;
-	--blue: #6200ee;
+	--accent: #3498db;
 	--red: red;
 	--black: #000;
 
@@ -34,7 +34,7 @@
 	--filled-color: white;
 	--filled-bg: #000;
 
-	--blue: #3700b3;
+	--accent: #3700b3;
 }
 
 * {
@@ -60,7 +60,7 @@ input {
 
 input:hover,
 input:focus {
-	border-color: var(--blue);
+	border-color: var(--accent);
 }
 
 a {
@@ -94,11 +94,11 @@ nav {
 
 .nav-logo {
 	font-size: var(--font-size-lg);
-	color: var(--blue);
+	color: var(--accent);
 }
 
 .dark-mode-toggle {
-	color: var(--blue);
+	color: var(--accent);
 	font-size: var(--font-size-lg);
 	cursor: pointer;
 }
@@ -181,7 +181,7 @@ nav {
 }
 
 .btn-blue {
-	background-color: var(--blue);
+	background-color: var(--accent);
 	color: var(--white);
 }
 
@@ -230,7 +230,7 @@ nav {
 	width: var(--sudoku-cell-size);
 	border-radius: var(--border-radius);
 	background-color: var(--bg-main);
-	color: var(--blue);
+	color: var(--accent);
 	display: grid;
 	place-items: center;
 	font-size: var(--font-size);
@@ -243,20 +243,20 @@ nav {
 }
 
 .main-grid-cell.selected {
-	background-color: var(--blue);
+	background-color: var(--accent);
 	color: var(--white);
 }
 
 .main-grid-cell:hover {
-	border: 2px solid var(--blue);
+	border: 2px solid var(--accent);
 }
 
 .main-grid-cell.hover {
-	border: 2px solid var(--blue);
+	border: 2px solid var(--accent);
 }
 
 .dark .main-grid-cell.hover {
-	border: 2px solid var(--blue);
+	border: 2px solid var(--accent);
 }
 
 .main-grid-cell.err {
@@ -297,7 +297,7 @@ nav {
 	height: 30px;
 	width: 30px;
 	border-radius: var(--border-radius);
-	background-color: var(--blue);
+	background-color: var(--accent);
 	color: var(--white);
 	font-size: var(--font-size);
 	display: grid;
@@ -369,7 +369,7 @@ nav {
 
 .result-screen .congrate {
 	font-size: var(--font-size-xl);
-	color: var(--blue);
+	color: var(--accent);
 }
 
 .result-screen .info {
@@ -378,7 +378,7 @@ nav {
 }
 
 #result-time {
-	color: var(--blue);
+	color: var(--accent);
 	font-size: var(--font-size-xl);
 }
 
